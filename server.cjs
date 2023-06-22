@@ -5,11 +5,16 @@ dotenv.config();
 require('./config/database.cjs')
 
 const { createTweet, getTweets, updateTweet, deleteTweet } = require('./controllers/tweets.cjs')
+const {getUsers, createUsers} = require('./controllers/users.cjs')
 
 const app = express();
 app.use(express.json());
 
 // CRUD - Create, Read, Update, Delete
+
+/* ---------- get and create users-------------------- */
+app.get('/users', getUsers)
+app.post('/users', createUsers)
 
 // C
 app.post('/tweets', createTweet)
